@@ -1,0 +1,4 @@
+---
+- name: Up
+  shell:
+    cmd: vagrant up

@@ -1,0 +1,14 @@
+- block:
+  - name: Install
+    include_tasks: "{{ item }}"
+    with_items:
+      - "install-{{ ansible_distribution | lower }}.yml"
+
+- block:
+  - name: Configure
+    include_tasks: "{{ item }}"
+    with_items:
+    - "configure.yml"
+  environment: "{{ property_env }}"
+  tags:
+    - conf

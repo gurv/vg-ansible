@@ -1,0 +1,9 @@
+---
+- block:
+  - name: Install
+    include_tasks: "{{ item }}"
+    with_items:
+      - "install-{{ ansible_os_family | lower }}.yml"
+- block:
+  - name: Up
+    include_tasks: up.yml

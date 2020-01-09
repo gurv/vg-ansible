@@ -1,0 +1,4 @@
+---
+- name: Install Jenkins
+  aur:
+    name: jenkins-lts

@@ -1,0 +1,13 @@
+---
+- include_role:
+     name: vagrant
+     tasks_from: "{{ item }}"
+  with_items:
+    - "install-{{ ansible_distribution | lower }}.yml"
+- name: Copy Vagrantfile
+  copy:
+    src: Vagrantfile
+    dest: "{{ lookup('env','PWD') }}"
+- include_role:
+     name: vagrant
+     tasks_from: "up.yml"

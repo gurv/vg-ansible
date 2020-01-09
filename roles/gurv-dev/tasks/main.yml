@@ -1,0 +1,6 @@
+---
+- debug:
+    msg: "sss"
+# - include_role:
+#     name: jenkins
+#     tasks_from: "main.yml"
