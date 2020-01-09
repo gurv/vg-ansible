@@ -4,6 +4,7 @@ install:
   - pip install "ansible==2.9.*"
 script:
   - ansible --version
+  - mkdir --parents ./ansible_collections/gurv/vg; mv ./* $_
   - ls -la
 notifications:
   slack:
