@@ -4,6 +4,7 @@ install:
   - pip install "ansible==2.9.*"
 script:
   - ansible --version
+  - ls -la
 notifications:
   slack:
     secure: Xcs6Q55dDDr6VosZGM214zRr48DffI2ExhapjD0ep7TS2NEuAP/dtDbS1LapY3+TjNiih/iRWIYhp+0st973CryJsUrmthtduBQ9s7HeoaCWzO59ey4cbUhOIx39mVQfJ/hNGxti+kn70DNSbK8reedc0rPQy1p7Dso/ymINRDixV6WhdeN03GVd8eLdeBIXecE/+Zlosl73+92CfVZMv3ePGiJ86GaQGjwuRDOzL1U1rDlz53eagPzH/QjgSo0DnJY9N1V9ems7+zg8irdq4NJQodA7A+t0Dt9fGVB/NcWt55VLUEgoBUs76R2uh5ozWCE79qGFnjrFU2hFi8iunvS/N+KnSYpTSftiDYZhC3vbX47DcGlSa1rBUHba6EM0pLQtGUB+LsNXwSwrsM5KSj3QqH/jLNE059fx1q4p6ZInorDgaIfnHenNAUFGiC17g9k0ZC7bWRNahIjONbgkMxGcabzeBJvdm/af6J4IMFQFcZPMXhszAv0EyO2glqneLnEhvRZIcnq3edtVPsUvlWlgj7UT9282X0gaw8GYSjQ5dKmVJcLI6vWNPcdXnA957ope9GMdg0L0KvmdHDCn9iQ0iPLEortSpi5coVeK4sNGA01ASaSrkT1yxizqBac6dk/l1QIDLuUYIu7SnVu5UxhHRF9unMEHQD3GUBd8mUc=
