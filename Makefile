@@ -41,7 +41,10 @@ sanity:
 units:
 	-ansible-test coverage erase # On first run, there is nothing to erase.
 	ansible-test units --python $(python_version) --coverage
-	ansible-test coverage html
+	# FIXME ERROR: 'CoverageData' object has no attribute 'read_file'
+	#     https://github.com/ansible/ansible/issues/65907
+	#     https://github.com/ansible/ansible/pull/65999
+	# ansible-test coverage html
 
 .PHONY: integration
 integration:
