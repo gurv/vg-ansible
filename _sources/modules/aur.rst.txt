@@ -1,0 +1,75 @@
+:github_url: https://github.com/gurv/vg-ansible/blob/master/plugins/modules/aur.py
+
+.. _aur_module:
+
+aur -- Работа с репозиторием AUR
+================================
+
+TODO
+
+
+Примеры
+-------
+
+.. code-block:: yaml+jinja
+
+   
+   # TODO
+
+
+
+
+
+
+
+
+Параметры
+---------
+
+auronly (optional)
+  TODO
+
+  | **type**: bool
+  | **default**: True
+
+name (optional)
+  Имя пакета.
+
+  | **type**: str
+
+nosave (optional)
+  TODO
+
+  | **type**: bool
+  | **default**: True
+
+recurse (optional)
+  TODO
+
+  | **type**: bool
+  | **default**: True
+
+state (optional)
+  Состояние после выполнения.
+
+  | **type**: str
+  | **default**: present
+  | **choices**: present, absent
+
+tool (optional)
+  Инструмент-оболочка.
+
+  | **type**: str
+  | **default**: pacaur
+  | **choices**: pacaur, yaourt
+
+update (optional)
+  TODO
+
+  | **type**: bool
+  | **default**: False
+
+
+
+
+

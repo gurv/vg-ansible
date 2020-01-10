@@ -175,6 +175,15 @@
 <h2>Пример playbook-а<a class="headerlink" href="#playbook" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference download internal" download="" href="../_downloads/2f9986eca347d4057cc117516ad3ebc9/example.yaml"><code class="xref download docutils literal notranslate"><span class="pre">example</span> <span class="pre">playbook</span></code></a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Roles</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">connection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="nt">roles</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">jenkins</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;jenkins&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">vagrant</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;vagrant&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">gurv</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;gurv&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">gurv-dev</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;gurv-dev&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
 </pre></div>
 </div>
 </div>
