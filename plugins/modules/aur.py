@@ -44,22 +44,22 @@ options:
       description:
         - TODO
       type: bool
-      default: True
+      default: 'True'
     nosave:
       description:
         - TODO
       type: bool
-      default: True
+      default: 'True'
     update:
       description:
         - TODO
       type: bool
-      default: False
+      default: 'False'
     auronly:
       description:
         - TODO
       type: bool
-      default: True
+      default: 'True'
 requirements:
     - "python >= 2.6"
 '''
