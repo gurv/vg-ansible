@@ -2,3 +2,4 @@
 - name: Up
   shell:
     cmd: vagrant up
+  tags: skip_ansible_lint # TODO

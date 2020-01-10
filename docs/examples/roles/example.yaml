@@ -4,7 +4,7 @@
   gather_facts: true
   connection: local
   roles:
-    - { role: jenkins, tags: ["jenkins"]  }
+    - { role: jenkins, tags: ["jenkins"] }
     - { role: vagrant, tags: ["vagrant"] }
     - { role: gurv, tags: ["gurv"] }
     - { role: gurv-dev, tags: ["gurv-dev"] }

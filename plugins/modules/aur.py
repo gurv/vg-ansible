@@ -5,7 +5,14 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 # Прототип: https://github.com/cdown/ansible-aur
 
-ANSIBLE_METADATA = {'metadata_version': '1.1'}
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+}
 
 DOCUMENTATION = '''
 ---
@@ -15,13 +22,44 @@ description:
     - TODO
 version_added: "2.8"
 author:
-    - Vladimir Gurinovich (gurv)
+    - Vladimir Gurinovich (@gurv)
 options:
+    name:
+      description:
+        - Имя пакета.
+      type: str
     state:
       description:
-        - The state of the instance after operating.
+        - Состояние после выполнения.
+      type: str
+      choices: [ 'present', 'absent' ]
       default: 'present'
-      choices: [ 'present', 'running', 'stopped', 'restarted', 'absent' ]
+    tool:
+      description:
+        - Инструмент-оболочка.
+      type: str
+      choices: [ 'pacaur', 'yaourt' ]
+      default: 'pacaur'
+    recurse:
+      description:
+        - TODO
+      type: bool
+      default: True
+    nosave:
+      description:
+        - TODO
+      type: bool
+      default: True
+    update:
+      description:
+        - TODO
+      type: bool
+      default: False
+    auronly:
+      description:
+        - TODO
+      type: bool
+      default: True
 requirements:
     - "python >= 2.6"
 '''
@@ -44,12 +82,13 @@ TOOL_CMD_MAP = {
 
 def package_installed(module, package_name):
     cmd = ['pacman', '-Q', package_name]
-    exit_code, _, _ = module.run_command(cmd, check_rc=False)
-    return exit_code == 0
+    rc, _stdout, _stderr = module.run_command(cmd, check_rc=False)
+    return rc == 0
 
 
 def update_packages(module, tool, auronly):
-    assert tool in TOOL_CMD_MAP
+    if tool not in TOOL_CMD_MAP:
+        raise AssertionError("BUG: tool not in TOOL_CMD_MAP")
 
     cmd = ['env', 'LC_ALL=C'] + TOOL_CMD_MAP[tool] + ['-Su']
     if auronly:
@@ -69,7 +108,8 @@ def install_packages(module, package_name, tool, update, auronly):
             msg='package already installed',
         )
 
-    assert tool in TOOL_CMD_MAP
+    if tool not in TOOL_CMD_MAP:
+        raise AssertionError("BUG: tool not in TOOL_CMD_MAP")
 
     options = '-S'
 

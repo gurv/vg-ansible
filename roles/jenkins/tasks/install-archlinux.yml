@@ -1,4 +1,4 @@
 ---
 - name: Install Jenkins
-  aur:
+  gurv.vg.aur:
     name: jenkins-lts
