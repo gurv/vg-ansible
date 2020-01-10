@@ -1,0 +1,5 @@
+---
+- name: Install, configure and run Jenkins
+  hosts: localhost # TODO
+  roles:
+    - gurv.vg.jenkins
