@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Роль example &mdash; VG Ansible Collection  documentation</title>
+  <title>Роль Jenkins &mdash; VG Ansible Collection  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Модули" href="../modules.html" />
+    <link rel="next" title="Роль Vagrant" href="vagrant.html" />
     <link rel="prev" title="Роли" href="../roles.html" /> 
 </head>
 
@@ -88,11 +88,12 @@
 <p class="caption"><span class="caption-text">Справочник</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../roles.html">Роли</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Роль example</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Роль Jenkins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#playbook">Пример playbook-а</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ci-cd">Протестированные платформы (CI/CD)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="vagrant.html">Роль Vagrant</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Модули</a></li>
@@ -148,14 +149,14 @@
         
           <li><a href="../roles.html">Роли</a> &raquo;</li>
         
-      <li>Роль example</li>
+      <li>Роль Jenkins</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/gurv/vg-ansible/blob/master/docs/source/roles/example.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/gurv/vg-ansible/blob/master/docs/source/roles/jenkins.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -169,21 +170,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="example">
-<h1>Роль example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="jenkins">
+<h1>Роль Jenkins<a class="headerlink" href="#jenkins" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="playbook">
 <h2>Пример playbook-а<a class="headerlink" href="#playbook" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference download internal" download="" href="../_downloads/2f9986eca347d4057cc117516ad3ebc9/example.yaml"><code class="xref download docutils literal notranslate"><span class="pre">example</span> <span class="pre">playbook</span></code></a>:</p>
+<p><a class="reference download internal" download="" href="../_downloads/9831a38ac45910a92af895171d6500ca/jenkins.yaml"><code class="xref download docutils literal notranslate"><span class="pre">jenkins</span> <span class="pre">playbook</span></code></a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Roles</span>
-  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
-  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">connection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install, configure and run Jenkins</span>
+  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span> <span class="c1"># TODO</span>
   <span class="nt">roles</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">jenkins</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;jenkins&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
-    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">vagrant</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;vagrant&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
-    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">gurv</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;gurv&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
-    <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> role</span><span class="p">:</span> <span class="nv">gurv-dev</span><span class="p p-Indicator">,</span><span class="nt"> tags</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;gurv-dev&quot;</span><span class="p p-Indicator">]</span> <span class="p p-Indicator">}</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gurv.vg.jenkins</span>
 </pre></div>
 </div>
 </div>
@@ -219,7 +215,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../modules.html" class="btn btn-neutral float-right" title="Модули" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vagrant.html" class="btn btn-neutral float-right" title="Роль Vagrant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../roles.html" class="btn btn-neutral float-left" title="Роли" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,12 +1,12 @@
-Роль example
+Роль Vagrant
 ============
 
 Пример playbook-а
 -----------------
 
-:download:`example playbook <../../examples/roles/example.yaml>`:
+:download:`vagrant playbook <../../examples/roles/vagrant.yaml>`:
 
-.. literalinclude:: ../../examples/roles/example.yaml
+.. literalinclude:: ../../examples/roles/vagrant.yaml
    :language: yaml
 
 Протестированные платформы (CI/CD)
