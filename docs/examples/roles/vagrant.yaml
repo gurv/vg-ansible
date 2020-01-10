@@ -1,0 +1,5 @@
+---
+- name: Install, configure and run Vagrant
+  hosts: localhost # TODO
+  roles:
+    - gurv.vg.vagrant
