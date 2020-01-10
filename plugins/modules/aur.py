@@ -10,12 +10,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1'}
 DOCUMENTATION = '''
 ---
 module: aur
-short_description: TODO
+short_description: Работа с репозиторием AUR
 description:
     - TODO
 version_added: "2.8"
 author:
-    - "Vladimir Gurinovich (gurv)"
+    - Vladimir Gurinovich (gurv)
 options:
     state:
       description:
