@@ -1,0 +1,2 @@
+docs/examples/installation/install-ansible-on-msys2.sh shebang!skip
+docs/examples/installation/install-ansible-on-msys2.sh shellcheck!skip
