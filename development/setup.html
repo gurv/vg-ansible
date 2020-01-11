@@ -94,7 +94,11 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../development.html">Разработка</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Подготовка окружения</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Предварительные требования</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Предварительные требования</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Загрузка исходного кода</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">Установка инструментов разработки</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Проверка</a></li>
@@ -178,13 +182,47 @@
 <h1>Подготовка окружения<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2>Предварительные требования<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Уже должно быть:</p>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>Должны быть установлены:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>python (версия не менее 3.3),</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span></code>.</p></li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>Установить <code class="docutils literal notranslate"><span class="pre">MSYS2</span></code> (например, <a class="reference external" href="http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20190524.exe">http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20190524.exe</a>).</p>
+<p>Запустить msys2.exe и выполнить
+<a class="reference download internal" download="" href="../_downloads/ee28176b78392cf8b05e8f1004add575/install-ansible-on-msys2.sh"><code class="xref download docutils literal notranslate"><span class="pre">скрипт</span></code></a>
+установки Ansible:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+which ansible &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -ne <span class="m">0</span> <span class="o">]</span><span class="p">;</span>
+<span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&quot;Installing Ansible...&quot;</span>
+sleep <span class="m">5</span>
+<span class="nb">pushd</span> .
+<span class="nb">cd</span> ~
+pacman -S git libyaml-devel python3 python3-pip mingw-w64-x86_64-libsodium libffi libffi-devel gcc pkg-config make openssl-devel openssh libcrypt-devel --noconfirm --needed
+<span class="nv">SODIUM_INSTALL</span><span class="o">=</span>system <span class="nv">CFLAGS</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags libffi<span class="sb">`</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="sb">`</span>pkg-config --libs libffi<span class="sb">`</span> python3 -m pip install cffi --no-binary :all:
+<span class="nv">SODIUM_INSTALL</span><span class="o">=</span>system <span class="nv">CFLAGS</span><span class="o">=</span><span class="sb">`</span>pkg-config --cflags libffi<span class="sb">`</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="sb">`</span>pkg-config --libs libffi<span class="sb">`</span> <span class="nv">C_INCLUDE_PATH</span><span class="o">=</span>/mingw64/include <span class="nv">LIBRARY_PATH</span><span class="o">=</span>/mingw64/lib python3 -m pip install pynacl
+python3 -m pip install ansible --no-binary :all:
+<span class="nb">popd</span>
+<span class="k">fi</span>
+
+which ansible &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span>
+<span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&quot;Ansible installed.&quot;</span>
+<span class="k">else</span>
+<span class="nb">echo</span> <span class="s2">&quot;Ansible not installed.&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="id3">
 <h2>Загрузка исходного кода<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
@@ -220,6 +258,27 @@ $ . ../../../venv/bin/activate
 (venv) $ make docs
 (venv) $ make -j4 integration
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>При работе под Windows выявлены следующие проблемы:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>make sanity</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span> <span class="n">plugins</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">aur</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span> <span class="n">module</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">executable</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>make units</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">aiyj2d6k</span><span class="o">-</span><span class="n">ansible</span><span class="o">/</span><span class="n">python</span><span class="p">:</span> <span class="n">Error</span> <span class="k">while</span> <span class="n">finding</span> <span class="n">module</span> <span class="n">specification</span> <span class="k">for</span> <span class="s1">&#39;coverage.__main__&#39;</span> <span class="p">(</span><span class="n">ModuleNotFoundError</span><span class="p">:</span> <span class="n">No</span> <span class="n">module</span> <span class="n">named</span> <span class="s1">&#39;coverage&#39;</span><span class="p">)</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">Command</span> <span class="s2">&quot;pytest --boxed -r a -n auto --color yes -p no:cacheprovider -c /c/prj/venv/lib/python3.7/site-packages/ansible_test/_data/pytest.ini --junit-xml</span>
+<span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">prj</span><span class="o">/</span><span class="n">ansible_collections</span><span class="o">/</span><span class="n">gurv</span><span class="o">/</span><span class="n">vg</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">output</span><span class="o">/</span><span class="n">junit</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">units</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="n">strict</span><span class="o">-</span><span class="n">markers</span> <span class="n">tests</span><span class="o">/</span><span class="n">unit</span><span class="o">/</span><span class="n">module_utils</span><span class="o">/</span><span class="n">test_utils</span><span class="o">.</span><span class="n">py</span><span class="s2">&quot; returned exit status 1.</span>
+<span class="n">make</span><span class="p">:</span> <span class="o">***</span> <span class="p">[</span><span class="n">Makefile</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span> <span class="n">units</span><span class="p">]</span> <span class="n">Ошибка</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 </div>
