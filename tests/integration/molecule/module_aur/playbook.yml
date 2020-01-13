@@ -1,0 +1,9 @@
+---
+- name: TODO
+  collections:
+    - gurv.vg
+  hosts: all
+  gather_facts: no
+  tasks:
+    - debug:
+        msg: "TODO"

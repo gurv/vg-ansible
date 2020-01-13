@@ -1,0 +1,5 @@
+---
+- name: Converge with latest version
+  hosts: all
+  roles:
+    - gurv.vg.jenkins
