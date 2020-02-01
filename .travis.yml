@@ -1,5 +1,10 @@
 language: python
 python: '3.8'
+addons:
+  sonarcloud:
+    organization: 'gurv-github'
+    token:
+      secure: $SONAR_TOKEN
 install:
   - pip install "ansible==2.9.*"
 script:
@@ -10,6 +15,8 @@ script:
   - make sanity
   - pip install -r units.requirements
   - make units
+  - ansible-test coverage xml
+  - sonar-scanner
   - pip install -r docs.requirements
   - make docs
 notifications:

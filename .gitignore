@@ -7,3 +7,4 @@ docs/source/modules
 *.swp
 collection
 *.tar.gz
+.scannerwork

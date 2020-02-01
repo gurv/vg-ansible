@@ -41,6 +41,7 @@ sanity:
 units:
 	-ansible-test coverage erase # On first run, there is nothing to erase.
 	ansible-test units --python $(python_version) --coverage
+	ansible-test coverage html
 
 .PHONY: integration
 integration:

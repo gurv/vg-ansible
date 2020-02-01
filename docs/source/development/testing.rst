@@ -9,6 +9,13 @@ Sanity-тесты
 Unit-тесты
 ----------
 
+Выполнить тесты::
+
+   (venv) $ make units
+
+Посмотреть покрытие тестами::
+
+   (venv) $ ansible-test coverage report
 
 Integration-тесты
 -----------------

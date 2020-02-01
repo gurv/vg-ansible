@@ -1,4 +1,5 @@
-coverage
+# Исправления для coverage 5.0+ войдут в ansible 2.10 : см. https://github.com/ansible/ansible/issues/65907
+coverage==4.5.4
 mock
 pytest
 pytest-mock
