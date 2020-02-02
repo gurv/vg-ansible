@@ -1,5 +1,6 @@
 ---
-- name: Converge with latest version
+- name: Jenkins
   hosts: all
-  roles:
-    - gurv.vg.jenkins
+  gather_facts: no
+  # roles:
+  #   - gurv.vg.jenkins

@@ -45,7 +45,7 @@ units:
 
 .PHONY: integration
 integration:
-	$(MAKE) -C tests/integration $(CI)
+	$(MAKE) -C tests/integration
 
 .PHONY: docs
 docs:

@@ -1,0 +1,4 @@
+---
+provisioner:
+  name: ansible
+  log: true

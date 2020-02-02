@@ -1,0 +1,5 @@
+# Docker
+
+```
+docker build -t gurv/archlinux:latest -f docker/Dockerfile-archlinux docker
+```

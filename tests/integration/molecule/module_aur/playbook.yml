@@ -1,9 +1,26 @@
 ---
-- name: TODO
+- name: Archlinux
   collections:
     - gurv.vg
   hosts: all
   gather_facts: no
   tasks:
-    - debug:
-        msg: "TODO"
+    # - name: Обновление Archlinux
+    #   raw: pacman -Suy --noconfirm
+    # - name: Установка python
+    #   raw: pacman -S --noconfirm python python-pip python-setuptools
+    # - name: Yстановка pacaur
+    #   raw: |
+    #     sudo pacman -S binutils make gcc fakeroot expac yajl git --noconfirm
+    #     mkdir -p /tmp/pacaur_install
+    #     cd /tmp/pacaur_install
+    #     curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
+    #     makepkg PKGBUILD --skippgpcheck
+    #     sudo pacman -U cower*.tar.xz --noconfirm
+    #     curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
+    #     makepkg PKGBUILD
+    #     sudo pacman -U pacaur*.tar.xz --noconfirm
+    #     rm -r /tmp/pacaur_install
+    # - name: Установка пакета far2l-git
+    #   aur:
+    #     name: far2l-git

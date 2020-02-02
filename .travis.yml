@@ -1,5 +1,7 @@
 language: python
 python: '3.8'
+services:
+  - docker
 addons:
   sonarcloud:
     organization: 'gurv-github'
@@ -17,6 +19,8 @@ script:
   - make units
   - ansible-test coverage xml
   - sonar-scanner
+  - pip install -r integration.requirements
+  - make -j4 integration
   - pip install -r docs.requirements
   - make docs
 notifications:
