@@ -1,0 +1,3 @@
+# Плагины
+
+https://docs.ansible.com/ansible/2.9/plugins/plugins.html[см. "Working With Plugins"]
